@@ -24,19 +24,14 @@
 			<div class="card">
 				<table>
 					<tr>
-						<th>User's Email</th><th>Online?</th>
+						<th>User's Email</th><th>Last Seen?</th>
 					</tr>
 					<tr ng-repeat="u in users">
 						<th>
 							{{u.email}}
 						</th>
 						<th>
-							<span class="green-text" ng-show="u.online">
-								Online
-							</span>
-							<span class="red-text" ng-hide="u.online">
-								Offline
-							</span>
+							<span ng-bind="convToTime(u.lastSeen)"></span>
 						</th>
 					</tr>
 				</table>

@@ -1,0 +1,30 @@
+{
+  "name": "firebase_persence",
+  "version": "1.0.0",
+  "description": "- Test if user is online or idle\r  - Test if user is not connect to internet",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/radikalravi/firebase_persence.git"
+  },
+  "keywords": [
+    "node",
+    "firebase",
+    "database"
+  ],
+  "author": "Ravi S. Singh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/radikalravi/firebase_persence/issues"
+  },
+  "homepage": "https://github.com/radikalravi/firebase_persence#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "firebase": "^3.6.4"
+  }
+}

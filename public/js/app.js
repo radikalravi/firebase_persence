@@ -10,7 +10,8 @@ angular.module('app',[
   };
   firebase.initializeApp(config);
 
-}).controller('Main',function($scope,$timeout,$interval){
+}).controller('Main',function($scope,$timeout,$interval,$http){
+	//$scope.ApiEndPoint = "http://localhost:3000"
 	$scope.auth = firebase.auth();
 	$scope.db = firebase.database().ref();
 	$scope.usersRef = $scope.db.child('users');
@@ -18,27 +19,38 @@ angular.module('app',[
 	$scope.isLoggedIn=false;
 	$scope.mode='signinmode';
 
-	$interval(function(){
-		$scope.heartbeat=$scope.heartbeat+1||0;
-		if($scope.isLoggedIn){
-			$scope.usersRef.child($scope.userId).child('online').set(true);
-			$scope.usersRef.child($scope.userId).child('lastSeen').set(firebase.database.ServerValue.TIMESTAMP);
-		}
-	},1000);
+	$scope.convToTime = function(timestamp){
+		return Date(timestamp);
+	};
+
+	// $interval(function(){
+	// 	$scope.heartbeat=$scope.heartbeat+1||0;
+	// 	if($scope.isLoggedIn){
+	// 		var data={
+	// 			path:'users/'+$scope.userId+'/lastSeen'
+	// 		};
+	// 		//todo write code to update timestamp via api endpoint
+	//
+	// 		/*
+	// 		$scope.usersRef.child($scope.userId).child('online').set(true);
+	// 		$scope.usersRef.child($scope.userId).child('lastSeen').set(firebase.database.ServerValue.TIMESTAMP);
+	// 		*/
+	// 	}
+	// },1000);
 
 	connectedRef.on("value", function(snap) {
 		console.log($scope.isLoggedIn);
 		if (snap.val() === true) {
 			if($scope.isLoggedIn){
 
-				$scope.usersRef.child($scope.userId).child('lastSeen').set(firebase.database.ServerValue.TIMESTAMP);
-				$scope.usersRef.child($scope.userId).child('online').onDisconnect().set(false);
+				//$scope.usersRef.child($scope.userId).child('lastSeen').set(firebase.database.ServerValue.TIMESTAMP);
+				//$scope.usersRef.child($scope.userId).child('online').onDisconnect().set(false);
 			}
 		} else {
 			alert("not connected");
 			if($scope.isLoggedIn){
 				///$scope.usersRef.child($scope.userId).child('online').set(true);
-				$scope.usersRef.child($scope.userId).child('online').onDisconnect().set(false);
+				//$scope.usersRef.child($scope.userId).child('online').onDisconnect().set(false);
 			}
 		}
 	});
@@ -66,9 +78,7 @@ angular.module('app',[
 	var afterLogin = function(user){
 		$scope.userId=user.uid;
 		$scope.userRef=$scope.usersRef.child($scope.userId).set({
-			email:user.email,
-			lastLogin:Date(),
-			online:true
+			email:user.email
 		});
 	};
 
