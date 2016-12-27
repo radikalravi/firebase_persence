@@ -6,11 +6,11 @@ var port= process.env.PORT ||3000;
 var app = express();
 
 var config = {
-	apiKey: "AIzaSyDUDzkYWTIep37ttZRQLPkP-r4nu4fwdlE",
-    authDomain: "game-839d8.firebaseapp.com",
-    databaseURL: "https://game-839d8.firebaseio.com",
-    storageBucket: "game-839d8.appspot.com",
-    messagingSenderId: "652923527177"
+	apiKey: "AIzaSyBTl501aneuEHtxky5_g6Etl_atYxPM80s",
+    authDomain: "fir-test-6468b.firebaseapp.com",
+    databaseURL: "https://fir-test-6468b.firebaseio.com",
+    storageBucket: "fir-test-6468b.appspot.com",
+    messagingSenderId: "439463118427"
 };
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
