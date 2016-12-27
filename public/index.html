@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Card Game</title>
+	<link rel="stylesheet" href="bower_components\firebaseui\dist\firebaseui.css">
+	<link rel="stylesheet" href="bower_components\materialize\dist\css\materialize.min.css">
+	<script src="bower_components\jquery\dist\jquery.js" charset="utf-8"></script>
+	<script src="bower_components\materialize\dist\js\materialize.min.js" charset="utf-8"></script>
+	<script src="bower_components\firebase\firebase.js" charset="utf-8"></script>
+	<script src="bower_components\firebaseui\dist\firebaseui.js" charset="utf-8"></script>
+
+	<script src="bower_components\angular\angular.min.js" charset="utf-8"></script>
+	<script src="bower_components\angular-materialize\src\angular-materialize.js" charset="utf-8"></script>
+
+	<script src="js/app.js" charset="utf-8"></script>
+</head>
+<body ng-app="app" ng-controller="Main">
+	<div class="container" ng-show="isLoggedIn">
+		<div class="row">
+			{{heartbeat}}<button type="button" class="btn red right" ng-click="logout()">Logout</button>
+		</div>
+		<div class="row">
+			<div class="card">
+				<table>
+					<tr>
+						<th>User's Email</th><th>Online?</th>
+					</tr>
+					<tr ng-repeat="u in users">
+						<th>
+							{{u.email}}
+						</th>
+						<th>
+							<span class="green-text" ng-show="u.online">
+								Online
+							</span>
+							<span class="red-text" ng-hide="u.online">
+								Offline
+							</span>
+						</th>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="row" ng-show="!isLoggedIn && mode=='signinmode'">
+		<h4>SignIn</h4>
+		<form class="col s12" ng-submit="signin(user)">
+			<div class="row">
+				<p class="red-text">{{err.message}}</p>
+				<div class="input-field col s6">
+					<input placeholder="Placeholder" id="email" type="email" ng-model="user.email" class="validate">
+					<label for="email">Email</label>
+				</div>
+				<div class="input-field col s6">
+					<input id="password" type="password" class="validate" ng-model="user.password">
+					<label for="password">Password</label>
+				</div>
+			</div>
+			<div class="row">
+				<button type="submit" class="btn flat">Login</button>
+				or <a href="javascript:void(0)" ng-click="mode='singupmode'">Signup</a>
+			</div>
+		</form>
+	</div>
+	<div class="row" ng-show="!isLoggedIn && mode=='singupmode'">
+		<h4>SignUp</h4>
+		<form class="col s12" ng-submit="signup(user)">
+			<div class="row">
+				<p class="red-text">{{err.message}}</p>
+				<div class="input-field col s12">
+					<input placeholder="Placeholder" id="name" type="text" ng-model="user.name" class="validate">
+					<label for="email">Name</label>
+				</div>
+				<div class="input-field col s6">
+					<input placeholder="Placeholder" id="email" type="email" ng-model="user.email" class="validate">
+					<label for="email">Email</label>
+				</div>
+				<div class="input-field col s6">
+					<input id="password" type="password" class="validate" ng-model="user.password">
+					<label for="password">Password</label>
+				</div>
+			</div>
+			<div class="row">
+				<button type="submit" class="btn flat">Signup</button>
+				or <a href="javascript:void(0)"ng-click="mode='signinmode'">Login</a>
+			</div>
+		</form>
+	</div>
+
+
+	<!-- <pre>{{mode | json}}</pre>
+	<pre>{{auth | json}}</pre>
+	<pre>{{user | json}}</pre>
+	<pre>{{err | json}}</pre> -->
+</body>
+</html>

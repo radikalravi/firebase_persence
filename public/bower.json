@@ -1,0 +1,21 @@
+{
+  "name": "public",
+  "authors": [
+    "Ravi S. Singh <ravi@radikal-labs.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "firebaseui": "^1.0.0",
+    "angular-materialize": "^0.2.1"
+  }
+}
