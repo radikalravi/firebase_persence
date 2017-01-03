@@ -5,16 +5,25 @@ var port= process.env.PORT ||3000;
 
 var app = express();
 
-var config = {
+/*var config = {
 	apiKey: "AIzaSyBTl501aneuEHtxky5_g6Etl_atYxPM80s",
     authDomain: "fir-test-6468b.firebaseapp.com",
     databaseURL: "https://fir-test-6468b.firebaseio.com",
     storageBucket: "fir-test-6468b.appspot.com",
     messagingSenderId: "439463118427"
-};
+};*/
+var config = {
+	apiKey: "AIzaSyBILjsq_QSbE8X-H2tiSxJxX5i1AV139nI",
+	authDomain: "monopoly-2ffc6.firebaseapp.com",
+	databaseURL: "https://monopoly-2ffc6.firebaseio.com",
+	storageBucket: "monopoly-2ffc6.appspot.com",
+	messagingSenderId: "68477236556"
+	};
+	
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
-Firebase.initializeApp(config);
+//Firebase.initializeApp(config);
+firebase.initializeApp(config);
 
 
 
